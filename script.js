@@ -1,20 +1,22 @@
 
 
 
-
-// var result = document.getElementById("showResult");
+let calc_is_on = true;
+// let result = document.getElementById("showResult");
 
 function on() {
 
-    var result = document.getElementById("showResult");
+    let result = document.getElementById("showResult");
       result.style.display = "flex";
     //   var x = document.getElementById("button2");
 
-    result.value = "";
-    result.placeholder = "0";
-
+    result.innerText = "";
+    result.innerText = "0";
+    console.log("on");
+    calc_is_on = true;
 
 }
+
 var btns = document.querySelectorAll(".btn");
 btns.forEach(
     (btn) => {
@@ -23,46 +25,52 @@ btns.forEach(
 );
 
 function moveToResult() {
-    var result = document.getElementById("showResult");
-    if (result.style.display == "flex" && result.placeholder == "0" ) {
-
-        result.placeholder = "0";
-        result.value += this.getAttribute("btnValue");
+    // console.log("moveToResult1");
+    let result = document.getElementById("showResult");
+    if (calc_is_on) {
+        result.innerText == "0" && (result.innerText = "");
+        let btnValue = this.getAttribute("btnValue");
+        // this.classList.contains("spec") && (
+        
+        result.innerText += btnValue;
 
     }
     else{
         result.style.display = "inline";
-       result.placeholder = "Please on it!";
+       result.innerText = "Please on it!";
+       result.innerText = "ON toh kar!";
 
 
    }
 }
 
 function wash() {
-    var result = document.getElementById("showResult");
-    result.value = "";
+    let result = document.getElementById("showResult");
+    result.innerText = "";
 }
 function calculate() {
-        var result = document.getElementById("showResult");
-        var el = String("error");
+        let result = document.getElementById("showResult");
         try {
-            result.value = eval(result.value);
+            result.innerText = eval(result.innerText);
 
         } catch (error) {
-            result.value = el ;
+            result.innerText = error.message;
 
         }
+        console.log("calculate");
     }
 
 
 
     function off() {
 
-        var result = document.getElementById("showResult");
-          result.style.display = "none";
+        // let result = document.getElementById("showResult");
+        //   result.style.display = "none";
         //   var x = document.getElementById("button2");
         wash();
 
+        console.log("off");
+        calc_is_on = false;
 
 }
 

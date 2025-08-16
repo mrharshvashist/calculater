@@ -1,0 +1,7 @@
+element.value = "something" (wrong)
+element.innerText = "something" (right)
+
+target:
+- fix expression ends with spec = error. remove the last spec before calculating.
+- pressing another spec should switch the symbol. to do this access the last value of the result by using endsWith method.
+- show the partial result without clicking the equal btn. 
